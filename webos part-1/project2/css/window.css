@@ -1,0 +1,272 @@
+.window {
+  position: absolute;
+  background-color: var(--surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  min-width: 300px;
+  min-height: 200px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border);
+  transition: opacity var(--transition-medium), transform var(--transition-medium);
+  opacity: 0;
+  transform: scale(0.95);
+  z-index: var(--z-window);
+}
+
+.window.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.window.active {
+  z-index: var(--z-window-active);
+  box-shadow: var(--shadow-lg);
+}
+
+.window-titlebar {
+  display: flex;
+  align-items: center;
+  padding: var(--space-2);
+  background-color: var(--surface);
+  border-bottom: 1px solid var(--border);
+  cursor: move;
+  user-select: none;
+}
+
+.window-controls {
+  display: flex;
+  margin-right: var(--space-2);
+}
+
+.window-control {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 8px;
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.window-close {
+  background-color: var(--error);
+}
+
+.window-minimize {
+  background-color: var(--warning);
+}
+
+.window-maximize {
+  background-color: var(--success);
+}
+
+.window-title {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  color: var(--text-primary);
+}
+
+.window-content {
+  flex: 1;
+  overflow: auto;
+  padding: var(--space-3);
+  position: relative;
+}
+
+/* Window types and templates */
+.window.notes-app .window-content {
+  padding: 0;
+}
+
+.window.notes-app textarea {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  resize: none;
+  padding: var(--space-3);
+  font-size: 14px;
+  background-color: var(--surface);
+  color: var(--text-primary);
+}
+
+.window.calculator-app .window-content {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+.calculator-display {
+  height: 80px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 var(--space-3);
+  font-size: 32px;
+  font-weight: 300;
+  background-color: rgba(var(--background-rgb), 0.5);
+  color: var(--text-primary);
+}
+
+.calculator-buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 1px;
+  flex: 1;
+  background-color: var(--border);
+}
+
+.calculator-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--surface);
+  font-size: 20px;
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.calculator-button:hover {
+  background-color: rgba(var(--background-rgb), 0.5);
+}
+
+.calculator-button.operator {
+  background-color: var(--primary);
+  color: white;
+}
+
+.calculator-button.operator:hover {
+  background-color: var(--primary-dark);
+}
+
+/* Window resize handles */
+.resize-handle {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+}
+
+.resize-handle.nw {
+  top: 0;
+  left: 0;
+  cursor: nw-resize;
+}
+
+.resize-handle.ne {
+  top: 0;
+  right: 0;
+  cursor: ne-resize;
+}
+
+.resize-handle.sw {
+  bottom: 0;
+  left: 0;
+  cursor: sw-resize;
+}
+
+.resize-handle.se {
+  bottom: 0;
+  right: 0;
+  cursor: se-resize;
+}
+
+.resize-handle.n {
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 5px;
+  cursor: n-resize;
+}
+
+.resize-handle.e {
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 5px;
+  height: 100%;
+  cursor: e-resize;
+}
+
+.resize-handle.s {
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 5px;
+  cursor: s-resize;
+}
+
+.resize-handle.w {
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 5px;
+  height: 100%;
+  cursor: w-resize;
+}
+
+/* Window animations */
+@keyframes windowOpen {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes windowClose {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+}
+
+.window.opening {
+  animation: windowOpen 0.25s ease forwards;
+}
+
+.window.closing {
+  animation: windowClose 0.2s ease forwards;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .window {
+    min-width: 250px;
+    min-height: 180px;
+  }
+  
+  .window-control {
+    width: 10px;
+    height: 10px;
+    margin-right: 6px;
+  }
+  
+  .window-title {
+    font-size: 13px;
+  }
+  
+  .window-content {
+    padding: var(--space-2);
+  }
+  
+  .calculator-display {
+    height: 60px;
+    font-size: 24px;
+  }
+  
+  .calculator-button {
+    font-size: 18px;
+  }
+}

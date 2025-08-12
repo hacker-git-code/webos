@@ -1,0 +1,125 @@
+/* Dock Styles */
+#dock-container {
+    position: fixed;
+    bottom: 36px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    pointer-events: none;
+    z-index: 1200;
+}
+
+#dock {
+    display: flex;
+    align-items: center;
+    padding: 6px 18px;
+    border-radius: 18px;
+    gap: 18px;
+    min-height: 48px;
+    min-width: 220px;
+    box-shadow: 0 8px 40px 0 rgba(0,0,0,0.18);
+    background: rgba(30, 30, 40, 0.22);
+    pointer-events: auto;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#dock:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.dock-item {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.dock-item:hover {
+    transform: scale(1.2) translateY(-10px);
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.dock-item.active {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.dock-item.active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: var(--primary);
+}
+
+.dock-item i {
+    font-size: 24px;
+    color: var(--text);
+    transition: all 0.3s ease;
+}
+
+.dock-item:hover i {
+    transform: scale(1.1);
+}
+
+.dock-item img {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.dock-item:hover img {
+    transform: scale(1.1);
+}
+
+.dock-separator {
+    width: 1px;
+    height: 30px;
+    background-color: rgba(255, 255, 255, 0.2);
+    margin: 0 5px;
+}
+
+/* Dock tooltip */
+.dock-item::before {
+    content: attr(title);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-10px);
+    padding: 5px 10px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.dock-item:hover::before {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-5px);
+}
+
+/* Dock animation */
+@keyframes dockBounce {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.dock-item:active {
+    animation: dockBounce 0.3s ease;
+} 

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebOS - Web-Based Operating System</title>
+    <link rel="stylesheet" href="static\css\styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Top Menu Bar -->
+    <div class="menu-bar">
+        <div class="menu-left">
+            <span class="menu-item" id="apple-menu"></span>
+            <span class="menu-item">File</span>
+            <span class="menu-item">Edit</span>
+            <span class="menu-item">View</span>
+            <span class="menu-item">Window</span>
+            <span class="menu-item">Help</span>
+        </div>
+        <div class="menu-right">
+            <span class="menu-item" id="time"></span>
+            <span class="menu-item" id="battery">
+                <i class="fas fa-battery-full"></i>
+            </span>
+            <span class="menu-item" id="notifications">
+                <i class="fas fa-bell"></i>
+            </span>
+        </div>
+    </div>
+
+    <!-- Desktop Area -->
+    <div class="desktop" id="desktop">
+        <!-- Wallpaper will be set via CSS -->
+    </div>
+
+    <!-- Dock -->
+    <div class="dock">
+        <div class="dock-items">
+            <div class="dock-item" data-app="finder">
+                <i class="fas fa-folder"></i>
+            </div>
+            <div class="dock-item" data-app="text-editor">
+                <i class="fas fa-file-alt"></i>
+            </div>
+            <div class="dock-item" data-app="calculator">
+                <i class="fas fa-calculator"></i>
+            </div>
+            <div class="dock-item" data-app="calendar">
+                <i class="fas fa-calendar"></i>
+            </div>
+            <div class="dock-item" data-app="notes">
+                <i class="fas fa-sticky-note"></i>
+            </div>
+            <div class="dock-item" data-app="terminal">
+                <i class="fas fa-terminal"></i>
+            </div>
+            <div class="dock-item" data-app="settings">
+                <i class="fas fa-cog"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- File Upload Button -->
+    <div class="file-upload">
+        <button id="upload-btn">
+            <i class="fas fa-upload"></i>
+        </button>
+    </div>
+
+    <!-- App Launcher -->
+    <div class="app-launcher" id="app-launcher">
+        <div class="search-bar">
+            <input type="text" placeholder="Search applications...">
+        </div>
+        <div class="app-grid">
+            <!-- Apps will be populated dynamically -->
+        </div>
+    </div>
+
+    <!-- Login Screen -->
+    <div class="login-screen" id="login-screen">
+        <div class="login-container">
+            <h1>WebOS</h1>
+            <div class="login-form">
+                <button class="google-login">
+                    <i class="fab fa-google"></i> Sign in with Google
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

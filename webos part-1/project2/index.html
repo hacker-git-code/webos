@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NebulaOS</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/css/desktop.css">
+    <link rel="stylesheet" href="/css/dock.css">
+    <link rel="stylesheet" href="/css/window.css">
+    <link rel="stylesheet" href="/css/topbar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  </head>
+  <body class="dark-theme">
+    <div id="os-container">
+      <!-- Top Bar -->
+      <div id="top-bar" class="glass">
+        <div class="top-bar-left">
+          <div class="app-menu">
+            <div class="app-logo">
+              <i class="fas fa-meteor"></i>
+            </div>
+            <span class="app-name">NebulaOS</span>
+            <div class="app-menu-dropdown glass">
+              <div class="menu-item">
+                <i class="fas fa-info-circle"></i>
+                About NebulaOS
+              </div>
+              <div class="menu-item">
+                <i class="fas fa-sliders-h"></i>
+                Preferences
+              </div>
+              <div class="menu-item">
+                <i class="fas fa-store"></i>
+                App Store
+              </div>
+              <div class="menu-divider"></div>
+              <div class="menu-item">
+                <i class="fas fa-redo"></i>
+                Restart
+              </div>
+              <div class="menu-item">
+                <i class="fas fa-power-off"></i>
+                Shut Down
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="top-bar-right">
+          <div class="system-icons">
+            <div id="wifi-icon" class="system-icon" title="Wi-Fi">
+              <i class="fas fa-wifi"></i>
+            </div>
+            <div id="battery-icon" class="system-icon" title="Battery">
+              <i class="fas fa-battery-full"></i>
+            </div>
+            <div id="clock" class="system-icon">12:00</div>
+            <div id="theme-toggle" class="system-icon" title="Toggle Theme">
+              <i class="fas fa-moon"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Desktop -->
+      <div id="desktop">
+        <img src="https://images.pexels.com/photos/3075993/pexels-photo-3075993.jpeg" alt="Wallpaper" class="wallpaper">
+        <!-- Desktop icons will be dynamically added here -->
+      </div>
+      
+      <!-- Dock -->
+      <div id="dock-container">
+        <div id="dock" class="glass">
+          <!-- App icons will be dynamically added here -->
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebOS Desktop</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/desktop.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dock.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/window.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/topbar.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body class="dark-theme">
+    <div id="os-container">
+        <!-- Top Bar -->
+        <div id="top-bar" class="glass minimal-bar">
+            <div class="top-bar-left">
+                <div class="app-menu">
+                    <div class="app-logo">
+                        <i class="fas fa-desktop"></i>
+                    </div>
+                    <span class="app-name">WebOS</span>
+                    <div class="app-menu-dropdown glass">
+                        <div class="menu-item">
+                            <i class="fas fa-info-circle"></i>
+                            About WebOS
+                        </div>
+                        <div class="menu-item">
+                            <i class="fas fa-sliders-h"></i>
+                            Preferences
+                        </div>
+                        <div class="menu-item">
+                            <i class="fas fa-store"></i>
+                            App Store
+                        </div>
+                        <div class="menu-divider"></div>
+                        <div class="menu-item">
+                            <i class="fas fa-redo"></i>
+                            Restart
+                        </div>
+                        <div class="menu-item">
+                            <i class="fas fa-power-off"></i>
+                            Shut Down
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="top-bar-right">
+                <div class="system-icons">
+                    <div id="wifi-icon" class="system-icon" title="Wi-Fi">
+                        <i class="fas fa-wifi"></i>
+                    </div>
+                    <div id="battery-icon" class="system-icon" title="Battery">
+                        <i class="fas fa-battery-full"></i>
+                    </div>
+                    <div id="clock" class="system-icon">12:00</div>
+                    <div id="theme-toggle" class="system-icon" title="Toggle Theme">
+                        <i class="fas fa-moon"></i>
+                    </div>
+                    <!-- New system icons -->
+                    <div id="search-icon" class="system-icon" title="Search">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div id="notifications-icon" class="system-icon" title="Notifications">
+                        <i class="fas fa-bell"></i>
+                        <span id="notifications-badge" class="badge">3</span>
+                    </div>
+                    <div id="volume-icon" class="system-icon" title="Volume">
+                        <i class="fas fa-volume-up"></i>
+                    </div>
+                    <div id="profile-icon" class="system-icon" title="User Profile">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Desktop -->
+        <div id="desktop" aria-label="Desktop">
+    <!-- System apps will be dynamically added here by JS -->
+    <!-- Desktop icons will be dynamically added here by JS -->
+    <div class="desktop-icon" style="--icon-color: #4A90E2; position:relative; z-index:1;" onclick="window.EventBus && window.EventBus.publish ? window.EventBus.publish('app:open', {name: 'Finder'}) : null">
+        <div class="icon-container"><i class="fas fa-folder-open"></i></div>
+        <span>Finder</span>
+    </div>
+    <div class="desktop-icon" style="--icon-color: #FFD700; position:relative; z-index:1;" onclick="window.EventBus && window.EventBus.publish ? window.EventBus.publish('app:open', {name: 'Notes'}) : null">
+        <div class="icon-container"><i class="fas fa-sticky-note"></i></div>
+        <span>Notes</span>
+    </div>
+    <div class="desktop-icon" style="--icon-color: #FF2D55; position:relative; z-index:1;" onclick="window.EventBus && window.EventBus.publish ? window.EventBus.publish('app:open', {name: 'Music'}) : null">
+        <div class="icon-container"><i class="fas fa-music"></i></div>
+        <span>Music</span>
+    </div>
+    <div class="desktop-icon" style="--icon-color: #34C759; position:relative; z-index:1;" onclick="window.EventBus && window.EventBus.publish ? window.EventBus.publish('app:open', {name: 'Calendar'}) : null">
+        <div class="icon-container"><i class="fas fa-calendar-alt"></i></div>
+        <span>Calendar</span>
+    </div>
+    <div class="desktop-icon" style="--icon-color: #FF9500; position:relative; z-index:1;" onclick="window.EventBus && window.EventBus.publish ? window.EventBus.publish('app:open', {name: 'Photos'}) : null">
+        <div class="icon-container"><i class="fas fa-images"></i></div>
+        <span>Photos</span>
+    </div>
+    <div class="desktop-icon" style="--icon-color: #333333; position:relative; z-index:1;" onclick="window.EventBus && window.EventBus.publish ? window.EventBus.publish('app:open', {name: 'Terminal'}) : null">
+        <div class="icon-container"><i class="fas fa-terminal"></i></div>
+        <span>Terminal</span>
+    </div>
+    <div class="desktop-icon" style="--icon-color: #8E8E93; position:relative; z-index:1;" onclick="window.EventBus && window.EventBus.publish ? window.EventBus.publish('app:open', {name: 'Settings'}) : null">
+        <div class="icon-container"><i class="fas fa-cogs"></i></div>
+        <span>Settings</span>
+    </div>
+    <div class="desktop-icon" style="--icon-color: #007AFF; position:relative; z-index:1;" onclick="window.EventBus && window.EventBus.publish ? window.EventBus.publish('app:open', {name: 'Browser'}) : null">
+        <div class="icon-container"><i class="fas fa-globe"></i></div>
+        <span>Browser</span>
+    </div>
+    <div class="desktop-icon" style="--icon-color: #FFCC00; position:relative; z-index:1;" onclick="window.EventBus && window.EventBus.publish ? window.EventBus.publish('app:open', {name: 'Calculator'}) : null">
+        <div class="icon-container"><i class="fas fa-calculator"></i></div>
+        <span>Calculator</span>
+    </div>
+    <div class="desktop-icon" style="--icon-color: #007AFF; position:relative; z-index:1;" onclick="window.EventBus && window.EventBus.publish ? window.EventBus.publish('app:open', {name: 'Mail'}) : null">
+        <div class="icon-container"><i class="fas fa-envelope"></i></div>
+        <span>Mail</span>
+    </div>
+    <div class="desktop-icon" style="--icon-color: #5AC8FA; position:relative; z-index:1;" onclick="window.EventBus && window.EventBus.publish ? window.EventBus.publish('app:open', {name: 'Weather'}) : null">
+        <div class="icon-container"><i class="fas fa-cloud-sun"></i></div>
+        <span>Weather</span>
+    </div>
+    <div class="desktop-icon" style="--icon-color: #5856D6; position:relative; z-index:1;" onclick="window.EventBus && window.EventBus.publish ? window.EventBus.publish('app:open', {name: 'App Store'}) : null">
+        <div class="icon-container"><i class="fas fa-store"></i></div>
+        <span>App Store</span>
+    </div>
+    <div class="desktop-icon" style="--icon-color: #D0021B; position:relative; z-index:1;" onclick="window.EventBus && window.EventBus.publish ? window.EventBus.publish('app:open', {name: 'Trash'}) : null">
+        <div class="icon-container"><i class="fas fa-trash"></i></div>
+        <span>Trash</span>
+    </div>
+    <div class="desktop-icon" style="--icon-color: #FF9500; position:relative; z-index:1;" onclick="window.EventBus && window.EventBus.publish ? window.EventBus.publish('app:open', {name: 'Files'}) : null">
+        <div class="icon-container"><i class="fas fa-folder"></i></div>
+        <span>Files</span>
+    </div>
+</div>
+
+<!-- Taskbar (inside desktop) -->
+<div class="taskbar" id="desktopTaskbar" style="display: flex !important; opacity: 1 !important; visibility: visible !important; position: fixed; bottom: 15px; left: 50%; transform: translateX(-50%); width: 80%; max-width: 800px; height: 46px; background-color: #000; z-index: 2000; border-radius: 23px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);">
+    <button class="start-button" id="startButton">
+        <i class="fas fa-th"></i>
+    </button>
+    <div class="taskbar-items" id="taskbarItems">
+        <div class="taskbar-item" data-app="documents">
+            <i class="fas fa-folder"></i>
+        </div>
+        <div class="taskbar-item" data-app="browser">
+            <i class="fas fa-globe"></i>
+        </div>
+        <div class="taskbar-item" data-app="mail">
+            <i class="fas fa-envelope"></i>
+        </div>
+        <div class="taskbar-item" data-app="terminal">
+            <i class="fas fa-terminal"></i>
+        </div>
+    </div>
+    <div class="system-tray">
+        <i class="fas fa-wifi"></i>
+        <i class="fas fa-volume-up"></i>
+        <i class="fas fa-battery-three-quarters"></i>
+        <i class="fas fa-bell" id="notificationBell"></i>
+        <div class="time-display" id="timeDisplay"></div>
+    </div>
+</div>
+
+<!-- Global Taskbar (outside desktop, always visible) -->
+<div class="taskbar" id="globalTaskbar" style="display: flex !important; opacity: 1 !important; visibility: visible !important; position: fixed; bottom: 15px; left: 50%; transform: translateX(-50%); z-index: 9999; border-radius: 23px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); background-color: #000; width: 80%; max-width: 800px; height: 46px;">
+    <button class="start-button" id="globalStartButton">
+        <i class="fas fa-th"></i>
+    </button>
+    <div class="taskbar-items" id="globalTaskbarItems">
+        <div class="taskbar-item" data-app="documents">
+            <i class="fas fa-folder"></i>
+        </div>
+        <div class="taskbar-item" data-app="browser">
+            <i class="fas fa-globe"></i>
+        </div>
+        <div class="taskbar-item" data-app="mail">
+            <i class="fas fa-envelope"></i>
+        </div>
+        <div class="taskbar-item" data-app="terminal">
+            <i class="fas fa-terminal"></i>
+        </div>
+    </div>
+    <div class="system-tray">
+        <i class="fas fa-wifi"></i>
+        <i class="fas fa-volume-up"></i>
+        <i class="fas fa-battery-three-quarters"></i>
+        <i class="fas fa-bell" id="globalNotificationBell"></i>
+        <div class="time-display" id="globalTimeDisplay"></div>
+    </div>
+</div>
+
+            <!-- Dock -->
+        <div id="dock-container">
+            <div id="dock" class="glass" aria-label="Dock">
+    <div id="recent-apps"></div>
+    <!-- App icons will be dynamically added here by JS -->
+</div>
+                <!-- App icons will be dynamically added here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal overlays for About, Preferences, App Store, etc. -->
+    <div id="modals"></div>
+
+    <script type="module" src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
